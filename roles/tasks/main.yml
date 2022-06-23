@@ -1,0 +1,17 @@
+---
+
+- name: 'Start the nginx docker container'
+  become: yes
+  docker_container:
+    image: nextcloud/all-in-one
+    name: nextcloud-aio-mastercontainer
+    volumes: 
+    - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports: '{{ nginx_published_ports }}'
+    exposed_ports: '{{ nginx_exposed_ports }}'
+    state: 'started'
+    restart_policy: 'always'
+    log_driver: 'syslog'
+    log_options:
+      tag: "{{ nginx_container_name }}"
