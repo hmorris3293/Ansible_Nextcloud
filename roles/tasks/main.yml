@@ -1,6 +1,6 @@
 ---
 
-- name: 'Start the nginx docker container'
+- name: 'Start the nextcloud docker container'
   become: yes
   docker_container:
     image: nextcloud/all-in-one
