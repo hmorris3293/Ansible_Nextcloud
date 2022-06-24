@@ -1,6 +1,7 @@
 ---
 
 - name: nextcloud docker
+  hosts: localhost
   tags: ncdocker
   gather_facts: yes
   tasks:
